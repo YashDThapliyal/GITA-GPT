@@ -1,82 +1,96 @@
-# GITA-GPT: A Retrieval-Augmented Generation (RAG) System 
+# GITA-GPT: Exploring the Bhagavad Gita with RAG Architecture
 
-GITA-GPT is a minimalistic proof-of-concept project that combines text retrieval and language generation using a Retrieval-Augmented Generation (RAG) approach. This application retrieves relevant verses from the Bhagavad Gita and generates a contextually informed response using a language model.
+## Overview
 
-## Project Structure
+**GITA-GPT** is a project designed to answer questions based on the teachings of the Bhagavad Gita using advanced AI technologies. Leveraging the Retrieval-Augmented Generation (RAG) architecture, vector databases, and a local language model, this tool offers insights into the ancient text in a modern, interactive way.
 
-Here's an overview of the project files:
+## Project Components
 
-- **README.md**: This file, providing an overview of the project.
-- **gita.csv**: Contains the raw data of the Bhagavad Gita verses.
-- **data_prep.py**: Script to preprocess the raw data and save it in a JSON format.
-- **gita_data.json**: JSON file containing processed Bhagavad Gita verses and their translations.
-- **embeddings.json**: JSON file containing embeddings for the Bhagavad Gita verses.
-- **create_faiss_index.py**: Script to create a FAISS index for the verse embeddings to enable efficient retrieval.
-- **gita_index.faiss**: FAISS index file used for verse retrieval.
-- **generate_gita_embeddings.py**: Script to generate embeddings for the Bhagavad Gita verses using a Sentence Transformer model.
-- **gpt2_inference.py**: Contains the function to generate text using the GPT-2 model. This file is a placeholder for actual LLM inference.
-- **gita_retrieval_system.py**: Main script integrating retrieval and language model components (deprecated in favor of Streamlit app).
-- **app.py**: Streamlit app file that provides the user interface for querying the system.
-- **styles.css**: Contains CSS styles for the Streamlit app to make it look aesthetic.
+1. **Data Preparation (`data_prep.py`)**
+   - Converts the Bhagavad Gita CSV into a structured JSON format for easy processing.
+   
+2. **Embedding Generation (`generate_gita_embeddings.py`)**
+   - Generates embeddings for the verses using the `SentenceTransformer` model and saves them in JSON format.
+   
+3. **FAISS Index Creation (`create_faiss_index.py`)**
+   - Creates a FAISS index from the verse embeddings to enable fast similarity search.
+   
+4. **GPT-2 Inference (`gpt2_inference.py`)**
+   - Contains functions for interacting with the GPT-2 model to generate text based on user queries.
 
-## Installation
+5. **Retrieval System (`gita_retrieval_system.py`)**
+   - Integrates the retrieval of relevant verses using the FAISS index with text generation via GPT-2, combining the outputs for comprehensive answers.
 
-To set up the project environment and install dependencies, follow these steps:
+6. **Streamlit Application (`app.py`)**
+   - Provides a user-friendly interface for querying the system and displaying results, including relevant verses from the Bhagavad Gita and responses from the language model.
 
-1. **Create a Virtual Environment**:
-   ```sh
-   python3 -m venv gita-gpt-env
+## How It Works
+
+1. **Data Preparation:**
+   - Convert and clean the Bhagavad Gita text into JSON format for processing.
+
+2. **Embedding Generation:**
+   - Compute embeddings for each verse to capture semantic meaning.
+
+3. **Index Creation:**
+   - Build a FAISS index to allow efficient retrieval of similar verses based on a given query.
+
+4. **Query Handling:**
+   - Use RAG architecture to combine retrieved verses with generated text for a comprehensive response.
+
+5. **User Interface:**
+   - Deploy a Streamlit app that allows users to input questions and view relevant verses and AI-generated responses.
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3.9+
+- Required libraries: `faiss`, `numpy`, `sentence-transformers`, `transformers`, `streamlit`, and others.
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository_url>
+   cd <repository_directory>
    ```
 
-2. **Activate the Virtual Environment**:
-   - On macOS/Linux:
-     ```sh
-     source gita-gpt-env/bin/activate
-     ```
-   - On Windows:
-     ```sh
-     gita-gpt-env\Scripts\activate
-     ```
-
-3. **Install Required Packages**:
-   ```sh
+2. Install dependencies:
+   ```bash
    pip install -r requirements.txt
    ```
 
-4. **Download Pre-trained Models**:
-   Ensure you have the required models downloaded, such as the Sentence Transformer and the GPT-2 model. Modify `generate_gita_embeddings.py` and `gpt2_inference.py` to load these models if they are not already present.
-
-## Usage
-
-1. **Generate Embeddings**:
-   Run the script to generate embeddings for the Bhagavad Gita verses:
-   ```sh
-   python generate_gita_embeddings.py
-   ```
-
-2. **Create FAISS Index**:
-   Build the FAISS index for efficient verse retrieval:
-   ```sh
-   python create_faiss_index.py
-   ```
-
-3. **Run the Streamlit App**:
-   Launch the Streamlit app to interact with the system:
-   ```sh
+3. Run the Streamlit app:
+   ```bash
    streamlit run app.py
    ```
 
-   This will open a web browser where you can input queries and receive responses based on the retrieved verses.
+### Usage
 
-## Troubleshooting
+1. Open the Streamlit app in your browser.
+2. Enter a question related to the Bhagavad Gita.
+3. Click 'Submit' to view relevant verses and AI-generated responses.
 
-- **Segmentation Fault**:
-  - Ensure that all dependencies are properly installed.
-  - Check for compatibility issues with the Python version or specific libraries.
+## Project Structure
 
-- **Model Issues**:
-  - Verify that the required models are correctly loaded and paths are set up properly in `gpt2_inference.py`.
+```
+.
+├── README.md
+├── gita.csv
+├── data_prep.py
+├── gita_data.json
+├── embeddings.json
+├── create_faiss_index.py
+├── gita_index.faiss
+├── generate_gita_embeddings.py
+├── gpt2_inference.py
+├── app.py
+└── __pycache__/
+```
 
-## Contributing
+## Future Enhancements
 
-Feel free to fork the repository and submit pull requests. For any issues or enhancements, please open an issue on the GitHub repository.
+- Integrate with more advanced or specific language models.
+- Improve the user interface and experience.
+- Expand the dataset with more texts or additional features.
