@@ -3,7 +3,7 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 from transformers import GPTNeoForCausalLM, GPT2Tokenizer
 import json
-
+#from gpt2_inference import generate_text
 
 # Load FAISS index and model
 index = faiss.read_index('gita_index.faiss')
@@ -27,24 +27,9 @@ def get_verse_texts(indices):
     return [gita_data[i]['translation'] for i in indices]
 
 
-def process_query_with_llm(query):
-    try:
-        return generate_text(query)
-    except Exception as e:
-        print(f"Error in GPT-2 inference: {e}")
-        return "Error generating response."
-
 
 def generate_text(prompt, max_length=150, num_return_sequences=1):
-    inputs = tokenizer(prompt, return_tensors="pt")
-    outputs = llm.generate(
-        inputs["input_ids"], 
-        max_length=max_length, 
-        num_return_sequences=num_return_sequences,
-        no_repeat_ngram_size=2,  # Avoid repetition
-        early_stopping=True
-    )
-    return [tokenizer.decode(output, skip_special_tokens=True) for output in outputs]
+    return "figure out an api to use for this "
 
 
 
