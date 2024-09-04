@@ -9,7 +9,7 @@ def csv_to_json(csv_file_path, json_file_path):
         for row in reader:
             data.append({
                 "chapter_number": row['chapter_number'],
-                "chapter_title": row['chapter_title'],
+               # "chapter_title": row['chapter_title'], #remove this field for storage and context relevancy
                 "chapter_verse": row['chapter_verse'],
                 "translation": row['translation']
             })
