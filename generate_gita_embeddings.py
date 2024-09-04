@@ -11,3 +11,5 @@ embeddings = model.encode(verses)
 
 with open('embeddings.json', 'w') as file:
     json.dump(embeddings.tolist(), file)
+
+print("Embeddings generated and saved.")
