@@ -13,7 +13,7 @@ def retrieve_verses(query, top_k=5):
     return indices[0]
 
 
-"""
+"""ret
 query = "What is the duty of a warrior?" #test retrieval
 relevant_verses = retrieve_verses(query)
 print(relevant_verses)
