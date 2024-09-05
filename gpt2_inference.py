@@ -1,21 +1,32 @@
-from transformers import GPTNeoForCausalLM, GPT2Tokenizer
+import requests
+import json
 
-# Load pre-trained model and tokenizer
-model_name = "EleutherAI/gpt-neo-1.3B"  # You can also use "EleutherAI/gpt-neo-2.7B" for a larger model
-tokenizer = GPT2Tokenizer.from_pretrained(model_name)
-model = GPTNeoForCausalLM.from_pretrained(model_name)
+# Ollama API endpoint
+OLLAMA_API_URL = "http://localhost:11434/api/generate"
 
 # Generate text
 def generate_text(prompt, max_length=150, num_return_sequences=1):
-    inputs = tokenizer(prompt, return_tensors="pt")
-    outputs = model.generate(
-        inputs["input_ids"], 
-        max_length=max_length, 
-        num_return_sequences=num_return_sequences,
-        no_repeat_ngram_size=2,  # Avoid repetition
-        early_stopping=True
-    )
-    return [tokenizer.decode(output, skip_special_tokens=True) for output in outputs]
+    data = {
+        "model": "llama3.1:latest",
+        "prompt": prompt,
+        "stream": False,
+        "options": {
+            "num_predict": max_length,
+            "stop": ["\n\n"],  # Stop generation at double newline
+        }
+    }
+
+    responses = []
+    for _ in range(num_return_sequences):
+        response = requests.post(OLLAMA_API_URL, json=data)
+        if response.status_code == 200:
+            result = json.loads(response.text)
+            responses.append(result['response'])
+        else:
+            print(f"Error: {response.status_code}")
+            print(response.text)
+    
+    return responses
 
 if __name__ == "__main__":
     prompt = "What is the duty of a warrior?"  # Replace with your query

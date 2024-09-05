@@ -3,7 +3,7 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 from transformers import GPTNeoForCausalLM, GPT2Tokenizer
 import json
-#from gpt2_inference import generate_text
+from gpt2_inference import generate_text
 
 # Load FAISS index and model
 index = faiss.read_index('gita_index.faiss')
