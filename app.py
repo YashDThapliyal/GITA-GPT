@@ -8,14 +8,14 @@ import xml.etree.ElementTree as ET
 
 # Page configuration
 st.set_page_config(
-    page_title="Gita GPT Retrieval System",
+    page_title="Gita GPT",
     page_icon="🕉️",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 # Initialize Groq client
-client = Groq(api_key="your_api_key_here")
+client = Groq(api_key="insert api key here")
 
 # Load FAISS index and SentenceTransformer model
 @st.cache_resource
@@ -41,7 +41,7 @@ def retrieve_verses(query, top_k=5):
     return indices[0], distances[0]
 
 def get_verse_texts(indices):
-    return [gita_data[i]['translation'] for i in indices]
+    return [gita_data[i]['chapter_text'] for i in indices]
 
 def process_query_with_groq(context):
     prompt = f"""You are an AI assistant specializing in the Bhagavad Gita. 
@@ -125,12 +125,12 @@ with st.sidebar:
     """)
 
 # Main content
-st.title("🕉️ Gita GPT Retrieval System")
+st.title("🕉️ Gita GPT")
 
 st.markdown("Ask a question about the Bhagavad Gita and get relevant verses and insights.")
 
 query = st.text_input('Enter your question:', placeholder="e.g., What does the Gita say about duty?", key="query_input")
-num_verses = st.slider("Number of verses to retrieve", min_value=1, max_value=10, value=5)
+num_verses = st.slider("Number of verses to retrieve", min_value=1, max_value=10, value=10)
 
 # Function to process the query
 def process_query():
