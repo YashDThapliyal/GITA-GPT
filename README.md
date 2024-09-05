@@ -41,36 +41,6 @@
 5. **User Interface:**
    - Deploy a Streamlit app that allows users to input questions and view relevant verses and AI-generated responses.
 
-## Getting Started
-
-### Prerequisites
-
-- Python 3.9+
-- Required libraries: `faiss`, `numpy`, `sentence-transformers`, `transformers`, `streamlit`, and others.
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone <repository_url>
-   cd <repository_directory>
-   ```
-
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Run the Streamlit app:
-   ```bash
-   streamlit run app.py
-   ```
-
-### Usage
-
-1. Open the Streamlit app in your browser.
-2. Enter a question related to the Bhagavad Gita.
-3. Click 'Submit' to view relevant verses and AI-generated responses.
 
 ## Project Structure
 
@@ -88,9 +58,3 @@
 ├── app.py
 └── __pycache__/
 ```
-
-## Future Enhancements
-
-- Integrate with more advanced or specific language models.
-- Improve the user interface and experience.
-- Expand the dataset with more texts or additional features.
