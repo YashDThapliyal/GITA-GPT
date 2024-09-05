@@ -9,11 +9,6 @@ from gpt2_inference import generate_text
 index = faiss.read_index('gita_index.faiss')
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
-# Load pre-trained model and tokenizer
-model_name = "EleutherAI/gpt-neo-1.3B"  # You can also use "EleutherAI/gpt-neo-2.7B" for a larger model
-tokenizer = GPT2Tokenizer.from_pretrained(model_name)
-llm = GPTNeoForCausalLM.from_pretrained(model_name)
-
 
 with open('gita_data.json', 'r') as f:
     gita_data = json.load(f)
@@ -27,12 +22,7 @@ def get_verse_texts(indices):
     return [gita_data[i]['translation'] for i in indices]
 
 
-
-def generate_text(prompt, max_length=150, num_return_sequences=1):
-    return "figure out an api to use for this "
-
-
-
+    
 def main():
     query = "What is the duty of a warrior?"  
 
