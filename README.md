@@ -2,27 +2,8 @@
 
 ## Overview
 
-**GITA-GPT** is a project designed to answer questions based on the teachings of the Bhagavad Gita using advanced AI technologies. Leveraging the Retrieval-Augmented Generation (RAG) architecture, vector databases, and a local language model, this tool offers insights into the ancient text in a modern, interactive way.
+**GITA-GPT** is a project designed to answer questions based on the teachings of the Bhagavad Gita using advanced AI technologies. Leveraging the Retrieval-Augmented Generation (RAG) architecture, vector databases, and a Meta's LLAMA large language model via the GROQ API, this tool offers insights into the ancient text in a modern, interactive way.
 
-## Project Components
-
-1. **Data Preparation (`data_prep.py`)**
-   - Converts the Bhagavad Gita CSV into a structured JSON format for easy processing.
-   
-2. **Embedding Generation (`generate_gita_embeddings.py`)**
-   - Generates embeddings for the verses using the `SentenceTransformer` model and saves them in JSON format.
-   
-3. **FAISS Index Creation (`create_faiss_index.py`)**
-   - Creates a FAISS index from the verse embeddings to enable fast similarity search.
-   
-4. **GPT-2 Inference (`gpt2_inference.py`)**
-   - Contains functions for interacting with the GPT-2 model to generate text based on user queries.
-
-5. **Retrieval System (`gita_retrieval_system.py`)**
-   - Integrates the retrieval of relevant verses using the FAISS index with text generation via GPT-2, combining the outputs for comprehensive answers.
-
-6. **Streamlit Application (`app.py`)**
-   - Provides a user-friendly interface for querying the system and displaying results, including relevant verses from the Bhagavad Gita and responses from the language model.
 
 ## How It Works
 
@@ -40,21 +21,3 @@
 
 5. **User Interface:**
    - Deploy a Streamlit app that allows users to input questions and view relevant verses and AI-generated responses.
-
-
-## Project Structure
-
-```
-.
-├── README.md
-├── gita.csv
-├── data_prep.py
-├── gita_data.json
-├── embeddings.json
-├── create_faiss_index.py
-├── gita_index.faiss
-├── generate_gita_embeddings.py
-├── gpt2_inference.py
-├── app.py
-└── __pycache__/
-```
