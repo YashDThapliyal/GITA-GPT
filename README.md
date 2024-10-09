@@ -1,7 +1,3 @@
-Here’s a comprehensive README for your GITA-GPT project:
-
----
-
 # GITA-GPT 🕉️
 **AI-powered system for exploring the teachings of the Bhagavad Gita**
 
@@ -84,7 +80,3 @@ We welcome contributions to improve GITA-GPT. If you’d like to contribute, ple
 
 ## License
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
-
----
-
-Let me know if you'd like to make any changes or add additional details!
