@@ -18,7 +18,6 @@ GITA-GPT is an advanced AI-based question-answering system designed to provide i
 - **FAISS (Facebook AI Similarity Search)**: Powers the vector-based search for retrieving relevant verses from the Bhagavad Gita.
 - **Meta's LLAMA LLM**: Handles real-time inference, providing insightful and context-aware answers to user queries.
 - **GROQ API**: Used to interact with the LLAMA model for generating natural language responses.
-- **TensorFlow**: Integrated into some components for machine learning processes.
 - **XML Parsing**: For generating related questions and improving user interaction.
 
 ## How It Works
