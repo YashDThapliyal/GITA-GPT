@@ -63,8 +63,6 @@ async def test_frontend():
 @app.post("/api/query")
 async def process_query(request: QueryRequest):
     try:
-        logger.info(f"Received query: {request.query}")
-        
         # Get verses from ChromaDB
         results = collection.query(
             query_texts=[request.query],
@@ -139,8 +137,6 @@ async def process_query(request: QueryRequest):
             # fallback: split by lines if no numbers found
             related_questions = [q.strip('- ').strip() for q in related_text.split('\n') if q.strip()]
         
-        logger.info("Query processed successfully")
-        
         return {
             "query": request.query,
             "ai_response": ai_response,
@@ -149,7 +145,6 @@ async def process_query(request: QueryRequest):
         }
         
     except Exception as e:
-        logger.error(f"Error: {str(e)}")
         error_message = handle_groq_error(e)
         raise HTTPException(status_code=500, detail=error_message)
 

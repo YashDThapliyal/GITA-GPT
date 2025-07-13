@@ -46,6 +46,5 @@ for i in range(0, len(documents), batch_size):
         metadatas=batch_metas,
         ids=batch_ids
     )
-    print(f"Uploaded batch {i//batch_size + 1}")
 
 print(f"✅ Uploaded {len(documents)} verses to ChromaDB Cloud!") 

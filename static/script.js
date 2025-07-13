@@ -1,6 +1,5 @@
 // Simple GITA-GPT Frontend
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🕉️ GITA-GPT Frontend loaded');
     
     const queryInput = document.getElementById('queryInput');
     const submitBtn = document.getElementById('submitBtn');
@@ -53,15 +52,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const aiResponse = document.getElementById('aiResponse');
             if (aiResponse) {
                 const text = aiResponse.textContent || '';
-                console.log('Copy button clicked. Text to copy:', text);
                 if (text.trim().length > 0) {
                     if (navigator.clipboard && navigator.clipboard.writeText) {
                         navigator.clipboard.writeText(text).then(() => {
                             showToast('Copied to clipboard! 📜', 'success');
-                            console.log('Clipboard write success');
                         }).catch((err) => {
                             showToast('Failed to copy. Please copy manually.', 'warning');
-                            console.error('Clipboard error:', err);
                         });
                     } else {
                         // Fallback for older browsers
@@ -72,20 +68,16 @@ document.addEventListener('DOMContentLoaded', function() {
                         try {
                             document.execCommand('copy');
                             showToast('Copied to clipboard! 📜', 'success');
-                            console.log('Clipboard fallback write success');
                         } catch (err) {
                             showToast('Failed to copy. Please copy manually.', 'warning');
-                            console.error('Clipboard fallback error:', err);
                         }
                         document.body.removeChild(textarea);
                     }
                 } else {
                     showToast('Nothing to copy!', 'warning');
-                    console.log('Nothing to copy');
                 }
             } else {
                 showToast('No answer to copy!', 'warning');
-                console.log('No answer to copy');
             }
         });
     }
@@ -104,8 +96,6 @@ document.addEventListener('DOMContentLoaded', function() {
         hideError();
         hideResponse();
         showToast('🔮 Sending your question to the Gita...', 'info');
-        console.log('🔮 Sending your question to the Gita...');
-        console.log('🌟 Sending query:', query);
 
         try {
             const response = await fetch('/api/query', {
@@ -120,27 +110,19 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             showToast('📖 Retrieving relevant verses...', 'info');
-            console.log('📖 Retrieving relevant verses...');
-            console.log('📨 Response status:', response.status);
 
             if (!response.ok) {
                 const errorData = await response.json();
-                console.error('❌ Error response:', errorData);
                 throw new Error(JSON.stringify(errorData));
             }
 
             const data = await response.json();
             showToast('✨ Generating answer...', 'info');
-            console.log('✨ Generating answer...');
-            console.log('✅ Response data:', data);
 
             displayResults(data);
             showToast('🕉️ Divine response received!', 'success');
-            console.log('🕉️ Divine response received!');
 
         } catch (error) {
-            console.error('❌ Error:', error);
-            
             try {
                 // Try to parse the error message as JSON
                 const errorData = JSON.parse(error.message);
@@ -351,5 +333,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
-    console.log('✨ Frontend ready!');
 }); 
