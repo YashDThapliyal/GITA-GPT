@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🕉️ GITA-GPT - Divine Wisdom Explorer</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="cosmic-background">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        <div class="clouds"></div>
+    </div>
+
+    <div class="container">
+        <!-- Mystical Header -->
+        <header class="mystical-header">
+            <div class="header-content">
+                <div class="sacred-logo">
+                    <div class="om-symbol">
+                        <i class="fas fa-om"></i>
+                    </div>
+                    <h1 class="title">GITA-GPT</h1>
+                    <div class="divine-subtitle">Divine Wisdom Explorer</div>
+                </div>
+                <p class="sacred-text">"Where ancient wisdom meets modern intelligence"</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sacred Query Section -->
+            <section class="sacred-query-section">
+                <div class="query-container">
+                    <div class="divine-gateway">
+                        <h2>Enter the Sacred Gateway</h2>
+                        <p>Ask the divine wisdom of the Bhagavad Gita</p>
+                        
+                        <div class="sacred-input-group">
+                            <div class="input-wrapper">
+                                <div class="sacred-icon">
+                                    <i class="fas fa-pray"></i>
+                                </div>
+                                <input 
+                                    type="text" 
+                                    id="queryInput" 
+                                    placeholder="What wisdom do you seek from the Gita?"
+                                    autocomplete="on"
+                                >
+                                <div class="input-border"></div>
+                            </div>
+                            <button id="submitBtn" class="sacred-submit-btn">
+                                <span class="btn-text">
+                                    <i class="fas fa-om"></i>
+                                    Seek Wisdom
+                                </span>
+                                <span class="btn-loading">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    Channeling...
+                                </span>
+                            </button>
+                        </div>
+
+                        <div class="sacred-settings">
+                            <label for="numVerses">Verses of wisdom to receive:</label>
+                            <div class="slider-container">
+                                <input type="range" id="numVerses" min="3" max="10" value="5">
+                                <span id="numVersesValue">5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Divine Results Section -->
+            <section id="resultsSection" class="divine-results-section hidden">
+                <!-- AI Divine Response -->
+                <div class="divine-response-card">
+                    <div class="card-header">
+                        <div class="header-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>Divine Insight</h3>
+                    </div>
+                    <div class="card-content">
+                        <div id="aiResponse" class="divine-response-text"></div>
+                        <div class="response-actions">
+                            <button class="sacred-action-btn" id="copyBtn">
+                                <i class="fas fa-copy"></i>
+                                Copy to clipboard
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sacred Verses -->
+                <div class="sacred-verses-card">
+                    <div class="card-header">
+                        <div class="header-icon">
+                            <i class="fas fa-scroll"></i>
+                        </div>
+                        <h3>Sacred Verses</h3>
+                    </div>
+                    <div class="card-content">
+                        <div id="versesContainer" class="sacred-verses-container"></div>
+                    </div>
+                </div>
+
+                <!-- Divine Questions -->
+                <div class="divine-questions-card">
+                    <div class="card-header">
+                        <div class="header-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Further Contemplations</h3>
+                    </div>
+                    <div class="card-content">
+                        <div id="relatedQuestions" class="divine-questions-container"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mystical Loading Section -->
+            <section id="loadingSection" class="mystical-loading-section hidden">
+                <div class="loading-container">
+                    <div class="sacred-spinner">
+                        <div class="om-wheel">
+                            <i class="fas fa-om"></i>
+                        </div>
+                    </div>
+                    <h3>Channeling Divine Wisdom...</h3>
+                    <p>Connecting with the sacred texts and ancient knowledge</p>
+                    <div class="loading-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Sacred Footer -->
+        <footer class="sacred-footer">
+            <div class="footer-content">
+                <p>🕉️ May the wisdom of the Gita guide your path to enlightenment</p>
+                <div class="footer-symbols">
+                    <span>☸️</span>
+                    <span>🕉️</span>
+                    <span>☸️</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Mystical Toast Notifications -->
+    <div id="toast" class="mystical-toast"></div>
+
+    <!-- Sacred Particles -->
+    <div id="particles"></div>
+
+    <script src="/static/script.js"></script>
+    <div id="error" style="display:none"></div>
+</body>
+</html> 

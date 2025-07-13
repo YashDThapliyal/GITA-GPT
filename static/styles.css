@@ -1,0 +1,998 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cosmic Background */
+.cosmic-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+    overflow: hidden;
+}
+
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: sparkle 20s linear infinite;
+}
+
+.twinkling {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 25px 5px, white, transparent),
+        radial-gradient(1px 1px at 50px 25px, white, transparent),
+        radial-gradient(1px 1px at 125px 20px, white, transparent),
+        radial-gradient(1.5px 1.5px at 50px 75px, white, transparent),
+        radial-gradient(1.5px 1.5px at 100px 50px, white, transparent);
+    background-repeat: repeat;
+    background-size: 150px 150px;
+    animation: twinkle 4s ease-in-out infinite;
+}
+
+.clouds {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(4px 4px at 100px 200px, rgba(255,255,255,0.1), transparent),
+        radial-gradient(3px 3px at 200px 300px, rgba(255,255,255,0.1), transparent),
+        radial-gradient(2px 2px at 300px 250px, rgba(255,255,255,0.1), transparent);
+    background-repeat: repeat;
+    background-size: 300px 300px;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Add aurora effect */
+.cosmic-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(45deg, transparent 30%, rgba(255, 215, 0, 0.1) 50%, transparent 70%),
+        linear-gradient(-45deg, transparent 30%, rgba(138, 43, 226, 0.1) 50%, transparent 70%);
+    animation: aurora 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes sparkle {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-100px); }
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(1deg); }
+}
+
+@keyframes aurora {
+    0%, 100% { 
+        opacity: 0.3;
+        transform: translateX(-20px) translateY(-10px);
+    }
+    50% { 
+        opacity: 0.6;
+        transform: translateX(20px) translateY(10px);
+    }
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #e8e8e8;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+/* Mystical Header */
+.mystical-header {
+    padding: 3rem 0;
+    text-align: center;
+    position: relative;
+}
+
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.sacred-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.om-symbol {
+    font-size: 4rem;
+    color: #ffd700;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    font-family: 'Crimson Text', serif;
+}
+
+.divine-subtitle {
+    font-size: 1.5rem;
+    color: #c0c0c0;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.sacred-text {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    font-weight: 300;
+    font-style: italic;
+    color: #b0b0b0;
+    font-family: 'Crimson Text', serif;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 2rem 0;
+}
+
+/* Sacred Query Section */
+.sacred-query-section {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 4rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sacred-query-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.4);
+}
+
+/* Mouse-following shimmer effect */
+.sacred-query-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255, 215, 0, 0.15) 0%,
+        rgba(255, 215, 0, 0.05) 30%,
+        transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.sacred-query-section:hover::before {
+    opacity: 1;
+}
+
+.query-container {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.divine-gateway h2 {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Crimson Text', serif;
+    transition: all 0.4s ease;
+}
+
+.divine-gateway p {
+    font-size: 1.3rem;
+    color: #c0c0c0;
+    margin-bottom: 3rem;
+    font-family: 'Crimson Text', serif;
+    font-style: italic;
+}
+
+/* Sacred Input Group */
+.sacred-input-group {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.input-wrapper {
+    flex: 1;
+    min-width: 400px;
+    position: relative;
+}
+
+.sacred-icon {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffd700;
+    font-size: 1.5rem;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+#queryInput {
+    width: 100%;
+    padding: 1.5rem 1.5rem 1.5rem 4rem;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 20px;
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    backdrop-filter: blur(10px);
+}
+
+#queryInput::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#queryInput:focus {
+    outline: none;
+    border-color: #ffd700;
+}
+
+#queryInput:focus + .sacred-icon {
+    color: #ffed4e;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.input-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.input-wrapper:focus-within .input-border {
+    opacity: 0;
+}
+
+.sacred-submit-btn {
+    padding: 1.5rem 3rem;
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    color: #000;
+    border: none;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    min-width: 180px;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.sacred-submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.sacred-submit-btn:hover::before {
+    left: 100%;
+}
+
+.sacred-submit-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+}
+
+.sacred-submit-btn:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.btn-loading {
+    display: none;
+}
+
+.sacred-submit-btn.loading .btn-text {
+    display: none;
+}
+
+.sacred-submit-btn.loading .btn-loading {
+    display: flex;
+}
+
+/* Sacred Settings */
+.sacred-settings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.sacred-settings label {
+    font-weight: 500;
+    color: #c0c0c0;
+    font-size: 1.1rem;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#numVerses {
+    width: 200px;
+    accent-color: #ffd700;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    height: 8px;
+    transition: all 0.3s ease;
+}
+
+#numVerses:hover {
+    accent-color: #ffed4e;
+}
+
+#numVersesValue {
+    font-weight: 600;
+    color: #ffd700;
+    min-width: 30px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+/* Divine Results Section */
+.divine-results-section {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.divine-results-section:not(.hidden) {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Divine Cards */
+.divine-response-card,
+.sacred-verses-card,
+.divine-questions-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.divine-response-card:hover,
+.sacred-verses-card:hover,
+.divine-questions-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-header {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    color: #000;
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.header-icon {
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+.card-header:hover .header-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.card-header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: 'Crimson Text', serif;
+}
+
+.card-content {
+    padding: 3rem;
+}
+
+/* Divine Response Text */
+.divine-response-text {
+    font-size: 1.2rem;
+    line-height: 1.9;
+    color: #e8e8e8;
+    margin-bottom: 2rem;
+    font-family: 'Crimson Text', serif;
+}
+
+.response-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.sacred-action-btn {
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 15px;
+    color: #ffd700;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.sacred-action-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+    transition: left 0.4s ease;
+}
+
+.sacred-action-btn:hover::before {
+    left: 100%;
+}
+
+.sacred-action-btn:hover {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: #ffd700;
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* Sacred Verses Container */
+.sacred-verses-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.verse-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2rem;
+    border-left: 4px solid #ffd700;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.verse-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.verse-item:hover::before {
+    left: 100%;
+}
+
+.verse-item:hover {
+    transform: translateX(10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.verse-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.verse-title {
+    font-weight: 600;
+    color: #ffd700;
+    font-size: 1.2rem;
+}
+
+.similarity-score {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.verse-text {
+    color: #c0c0c0;
+    line-height: 1.8;
+    font-family: 'Crimson Text', serif;
+}
+
+/* Divine Questions Container */
+.divine-questions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.question-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 15px;
+    padding: 1.5rem 2rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1.1rem;
+    color: #c0c0c0;
+    line-height: 1.6;
+    font-family: 'Crimson Text', serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.question-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+    transition: left 0.4s ease;
+}
+
+.question-btn:hover::before {
+    left: 100%;
+}
+
+.question-btn:hover {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    color: #000;
+    border-color: #ffd700;
+    transform: translateX(10px) scale(1.02);
+}
+
+/* Mystical Loading Section */
+.mystical-loading-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+}
+
+.loading-container {
+    text-align: center;
+    color: #fff;
+}
+
+.sacred-spinner {
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.om-wheel {
+    font-size: 5rem;
+    color: #ffd700;
+    text-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+    animation: rotate 3s linear infinite;
+    position: relative;
+}
+
+.om-wheel::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 50%;
+    animation: pulse-ring 2s ease-out infinite;
+}
+
+.om-wheel::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 50%;
+    animation: pulse-ring 2s ease-out infinite 0.5s;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+.loading-container h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: #ffd700;
+    font-family: 'Crimson Text', serif;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.loading-container p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-bottom: 2rem;
+}
+
+.loading-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.loading-dots span {
+    width: 12px;
+    height: 12px;
+    background: #ffd700;
+    border-radius: 50%;
+    animation: dots 1.5s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.loading-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loading-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes dots {
+    0%, 100% { 
+        transform: scale(1); 
+        opacity: 0.5;
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+    50% { 
+        transform: scale(1.5); 
+        opacity: 1;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    }
+}
+
+/* Sacred Footer */
+.sacred-footer {
+    text-align: center;
+    padding: 3rem 0;
+    color: #c0c0c0;
+}
+
+.footer-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-family: 'Crimson Text', serif;
+    font-style: italic;
+}
+
+.footer-symbols {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 2rem;
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Mystical Toast */
+.mystical-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    color: #000;
+    padding: 1.5rem 2rem;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3);
+    transform: translateX(400px);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    font-weight: 600;
+}
+
+.mystical-toast.show {
+    transform: translateX(0);
+}
+
+.mystical-toast.error {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+    color: #fff;
+}
+
+.mystical-toast.warning {
+    background: linear-gradient(45deg, #ffd93d, #ffe066);
+    color: #000;
+}
+
+.mystical-toast.success {
+    background: linear-gradient(45deg, #6bcf7f, #8ed99e);
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .sacred-query-section {
+        padding: 2rem 1.5rem;
+    }
+    
+    .divine-gateway h2 {
+        font-size: 2rem;
+    }
+    
+    .sacred-input-group {
+        flex-direction: column;
+    }
+    
+    .input-wrapper {
+        min-width: auto;
+    }
+    
+    .sacred-submit-btn {
+        width: 100%;
+    }
+    
+    .card-content {
+        padding: 2rem;
+    }
+    
+    .verse-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem;
+    }
+    
+    .om-symbol {
+        font-size: 3rem;
+    }
+    
+    .divine-gateway h2 {
+        font-size: 1.5rem;
+    }
+    
+    .card-header {
+        padding: 1.5rem 2rem;
+    }
+    
+    .card-content {
+        padding: 1.5rem;
+    }
+}
+
+/* Enhanced error display */
+#error {
+    display: none;
+    margin: 20px 0;
+}
+
+.error-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.error-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    animation: shimmer 2s infinite;
+    pointer-events: none;
+}
+
+.error-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+    display: block;
+    animation: pulse 2s infinite;
+}
+
+.error-message {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.retry-info {
+    font-size: 0.9em;
+    opacity: 0.9;
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+} 
+
+/* --- Divine Response Section Headers and Lists --- */
+.divine-response-text h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 0.7rem;
+    color: #ffe066;
+    letter-spacing: 0.02em;
+    text-shadow: 0 2px 8px #3a2c6b88;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+.divine-response-text ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1.1em;
+    margin-bottom: 1.4em;
+}
+.divine-response-text ul li {
+    position: relative;
+    margin-bottom: 0.3em;
+    padding-left: 3em;          /* more indentation */
+    font-size: 1.13rem;
+    color: #f4f4fa;
+    line-height: 1.5;
+    text-indent: -0.5em;        /* bullet slightly back to align with new text start */
+}
+
+.divine-response-text ul li::before {
+    content: "✦";
+    color: #ffe066;
+    position: absolute;
+    left: 0;
+    font-size: 1.18em;
+    top: 0.13em;
+    line-height: 1;
+} 
