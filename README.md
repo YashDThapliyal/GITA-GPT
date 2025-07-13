@@ -1,96 +1,95 @@
-# GITA-GPT: Exploring the Bhagavad Gita with RAG Architecture
+# GITA-GPT
 
-## Overview
+A modern AI-powered Q&A system for the Bhagavad Gita, using Retrieval-Augmented Generation (RAG) with ChromaDB Cloud, FastAPI, and a beautiful custom frontend.
 
-**GITA-GPT** is a project designed to answer questions based on the teachings of the Bhagavad Gita using advanced AI technologies. Leveraging the Retrieval-Augmented Generation (RAG) architecture, vector databases, and a local language model, this tool offers insights into the ancient text in a modern, interactive way.
+---
 
-## Project Components
+## Features
+- **Ask any question** about the Bhagavad Gita and get context-aware answers
+- **Semantic search** over verses using vector embeddings
+- **FastAPI backend** with Groq LLM integration
+- **ChromaDB Cloud** for scalable, managed vector search
+- **Modern frontend** (HTML/CSS/JS) with smooth UX
 
-1. **Data Preparation (`data_prep.py`)**
-   - Converts the Bhagavad Gita CSV into a structured JSON format for easy processing.
-   
-2. **Embedding Generation (`generate_gita_embeddings.py`)**
-   - Generates embeddings for the verses using the `SentenceTransformer` model and saves them in JSON format.
-   
-3. **FAISS Index Creation (`create_faiss_index.py`)**
-   - Creates a FAISS index from the verse embeddings to enable fast similarity search.
-   
-4. **GPT-2 Inference (`gpt2_inference.py`)**
-   - Contains functions for interacting with the GPT-2 model to generate text based on user queries.
+---
 
-5. **Retrieval System (`gita_retrieval_system.py`)**
-   - Integrates the retrieval of relevant verses using the FAISS index with text generation via GPT-2, combining the outputs for comprehensive answers.
+## Quick Start
 
-6. **Streamlit Application (`app.py`)**
-   - Provides a user-friendly interface for querying the system and displaying results, including relevant verses from the Bhagavad Gita and responses from the language model.
+### 1. Clone & Install
+```bash
+pip install -r requirements.txt
+```
 
-## How It Works
+### 2. Set Environment Variables
+```bash
+export GROQ_API_KEY=your_groq_api_key
+export CHROMA_CLOUD_API_KEY=your_chroma_cloud_api_key
+export CHROMA_CLOUD_TENANT=your_chroma_cloud_tenant_id
+```
 
-1. **Data Preparation:**
-   - Convert and clean the Bhagavad Gita text into JSON format for processing.
+### 3. Upload Embeddings to ChromaDB Cloud
+```bash
+python create_chroma_index.py
+```
 
-2. **Embedding Generation:**
-   - Compute embeddings for each verse to capture semantic meaning.
+### 4. Run the Backend
+```bash
+python api.py
+```
 
-3. **Index Creation:**
-   - Build a FAISS index to allow efficient retrieval of similar verses based on a given query.
+### 5. Open the Frontend
+Go to [http://localhost:8000](http://localhost:8000) in your browser.
 
-4. **Query Handling:**
-   - Use RAG architecture to combine retrieved verses with generated text for a comprehensive response.
-
-5. **User Interface:**
-   - Deploy a Streamlit app that allows users to input questions and view relevant verses and AI-generated responses.
-
-## Getting Started
-
-### Prerequisites
-
-- Python 3.9+
-- Required libraries: `faiss`, `numpy`, `sentence-transformers`, `transformers`, `streamlit`, and others.
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone <repository_url>
-   cd <repository_directory>
-   ```
-
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Run the Streamlit app:
-   ```bash
-   streamlit run app.py
-   ```
-
-### Usage
-
-1. Open the Streamlit app in your browser.
-2. Enter a question related to the Bhagavad Gita.
-3. Click 'Submit' to view relevant verses and AI-generated responses.
+---
 
 ## Project Structure
-
 ```
-.
-├── README.md
-├── gita.csv
-├── data_prep.py
-├── gita_data.json
-├── embeddings.json
-├── create_faiss_index.py
-├── gita_index.faiss
-├── generate_gita_embeddings.py
-├── gpt2_inference.py
-├── app.py
-└── __pycache__/
+GITA-GPT/
+├── api.py                  # FastAPI backend (cloud-native)
+├── create_chroma_index.py  # Embedding upload to ChromaDB Cloud
+├── gita_data.json          # Bhagavad Gita data (JSON)
+├── requirements.txt        # Python dependencies
+├── static/                 # Frontend (HTML, CSS, JS)
+│   ├── index.html
+│   ├── styles.css
+│   └── script.js
+├── vercel.json             # Vercel deployment config (optional)
+└── README.md               # This file
 ```
 
-## Future Enhancements
+---
 
-- Integrate with more advanced or specific language models.
-- Improve the user interface and experience.
-- Expand the dataset with more texts or additional features.
+## Tech Stack
+- **Backend:** FastAPI, ChromaDB Cloud, Groq LLM
+- **Frontend:** HTML, CSS, JavaScript
+- **Embeddings:** SentenceTransformers (MiniLM-L6-v2)
+
+---
+
+## Deployment
+
+### Vercel (Recommended)
+- Connect your repo to Vercel
+- Set environment variables in the Vercel dashboard
+- Deploy!
+
+### Traditional Hosting
+```bash
+uvicorn api:app --host 0.0.0.0 --port 8000
+```
+
+---
+
+## Customization
+- Change the LLM model in `api.py` if desired
+- Adjust the number of verses returned in the frontend or backend
+- Style the frontend in `static/styles.css`
+
+---
+
+## License
+MIT
+
+---
+
+**Built with ❤️ for learning, exploration, and sharing the wisdom of the Gita.**
