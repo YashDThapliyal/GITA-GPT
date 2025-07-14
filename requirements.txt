@@ -1,6 +1,6 @@
 numpy==1.26.3
 streamlit==1.31.0
-chromadb==0.4.22
+chromadb==0.4.24
 sentence-transformers==2.3.1
 groq==0.29.0
 fastapi==0.104.1
