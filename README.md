@@ -14,3 +14,13 @@ A modern AI-powered Q&A system for the Bhagavad Gita, using Retrieval-Augmented 
 - **Modern frontend** (HTML/CSS/JS) with smooth UX
 
 
+To run the code simply do:
+
+```bash
+#0 Get a GROQ API key and store it as GROQ_API_KEY
+
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Start the API server
+python api.py
