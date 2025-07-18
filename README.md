@@ -2,6 +2,8 @@
 
 # GITA-GPT
 
+DEMO: https://youtu.be/_aAi9S8k2yE
+
 A modern AI-powered Q&A system for the Bhagavad Gita, using Retrieval-Augmented Generation (RAG) with ChromaDB Cloud, FastAPI, and a beautiful custom frontend.
 
 ---
